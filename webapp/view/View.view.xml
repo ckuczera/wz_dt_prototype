@@ -1,7 +1,7 @@
 <mvc:View controllerName="com.bmw.xss.ess.dt.wzdtprototype.controller.View" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:t="sap.ui.table">
     <Page id="page" title="{i18n>title}">
         <content>
-            <Table headerText="Products" items="{ path: '/RequestSet', sorter: { path: 'EmployeeName' } }">
+            <Table headerText="Products" items="{ path: '/RequestSet', sorter: { path: 'EmployeeName' } }" itemPress="onItemPress">
                 <columns>
                     <Column>
                         <Text text="Product" />
@@ -11,7 +11,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem vAlign="Middle">
+                    <ColumnListItem vAlign="Middle" type="Navigation">
                         <cells>
                             <ObjectIdentifier title="{EmployeeName}" text="{Pernr}"/>
                             <Text text="{City}" />
