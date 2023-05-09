@@ -1,7 +1,15 @@
-<mvc:View controllerName="com.bmw.xss.ess.dt.wzdtprototype.controller.Detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:t="sap.ui.table">
+<mvc:View xmlns:f="sap.f" controllerName="com.bmw.xss.ess.dt.wzdtprototype.controller.Detail" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:t="sap.ui.table">
     <Page id="pageDetail" title="{EmployeeName}">
         <content>
-            
+            <List >
+                <DisplayListItem label="Personalnummer" value="{Pernr}" />
+                <DisplayListItem label="Eintrittsdatum" value="{StartDate}" />
+                <DisplayListItem label="Adresse" value="{Street}, {PostalCode} {City}, {Country}"/>
+                
+                <DisplayListItem label="Land" value="{Country}" />
+                <DisplayListItem label="IBAN" value="{IBAN}" />
+                
+           </List>
         </content>
     </Page>
 </mvc:View>
