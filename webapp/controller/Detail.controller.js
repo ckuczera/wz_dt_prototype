@@ -18,6 +18,9 @@ sap.ui.define([
                 }), "viewModel");
 
 
+                var oMessageManager = sap.ui.getCore().getMessageManager();
+                this.getView().setModel(oMessageManager.getMessageModel(), "message");
+                oMessageManager.registerObject(this.getView(), true);
             },
 
             onSavePressed: function(oEvent) {
@@ -27,19 +30,8 @@ sap.ui.define([
                 if(oModel.hasPendingChanges()) {
                     oModel.submitChanges({
                         success: function(oData) {
-
                             oViewModel.setProperty("/control/isEditable", false);
                             sap.m.MessageToast.show("Changes saved successfully");
-
-                            oMessageManager = sap.ui.getCore().getMessageManager();
-                            this.getView().setModel(oMessageManager.getMessageModel(), "message");
-                            oMessageManager.registerObject(this.getView(), true);
-                           
-
-
-
-
-
                         },
                         error: function(oData) {
                             sap.m.MessageBox.error("Fehler: " + onerror.message);
@@ -68,16 +60,6 @@ sap.ui.define([
                 });
             },
             
-
-
-
-
-
-
-
-
-
-
             onMessagePopoverPress : function (oEvent) {
                 var oSourceControl = oEvent.getSource();
                 this._getMessagePopover().then(function(oMessagePopover){
@@ -101,7 +83,7 @@ sap.ui.define([
                 if (!this._pMessagePopover) {
                     this._pMessagePopover = Fragment.load({
                         id: oView.getId(),
-                        name: "/home/user/wz_dt_prototype/webapp/view/MessagePopover.fragment.xml"
+                        name: "com.bmw.xss.ess.dt.wzdtprototype.view.MessagePopover"
                     }).then(function (oMessagePopover) {
                         oView.addDependent(oMessagePopover);
                         return oMessagePopover;

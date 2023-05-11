@@ -33,30 +33,30 @@
                     <f:content>
                         <core:Title text="Adresse" />
                         <Label text="Street/No." />
-                        <Input value="{Street}" enabled="{viewModel>/control/isEditable}"/>
+                        <Input value="{Street}" editable="{viewModel>/control/isEditable}"/>
                         <Label text="ZIP Code/City" />
-                        <Input value="{PostalCode}" enabled="{viewModel>/control/isEditable}">
+                        <Input value="{PostalCode}" editable="{viewModel>/control/isEditable}">
                             <layoutData>
                                 <l:GridData span="XL2 L3 M4 S4" />
                             </layoutData>
                         </Input>
-                        <Input value="{City}" enabled="{viewModel>/control/isEditable}"/>
+                        <Input value="{City}" editable="{viewModel>/control/isEditable}"/>
                         <Label text="Country" />
                         <Input
                             id="country"
-                            value="{Country}" enabled="{viewModel>/control/isEditable}"
+                            value="{Country}" editable="{viewModel>/control/isEditable}"
                         />
 
                         <core:Title text="Bankdaten" />
                         <Label text="IBAN" />
-                        <Input value="{IBAN} " enabled="{viewModel>/control/isEditable}" />
+                        <Input value="{IBAN} " editable="{viewModel>/control/isEditable}" />
                         <Label text="Ländererkennung" />
-                        <Input value="{BankCity}" enabled="{viewModel>/control/isEditable}"/>
+                        <Input value="{BankCity}" editable="{viewModel>/control/isEditable}"/>
 
                         <core:Title text="Parkplatz" />
                         <CheckBox
                             text="No Parking Place"
-                            selected="false" enabled="{viewModel>/control/isEditable}"
+                            selected="false" editable="{viewModel>/control/isEditable}"
                         />
                     </f:content>
                 </f:SimpleForm>
