@@ -1,8 +1,9 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-	"sap/ui/model/json/JSONModel"
+	"sap/ui/model/json/JSONModel",
+    "sap/ui/core/Fragment"
 ],
-    function (Controller, JSONModel) {
+    function (Controller, JSONModel, Fragment) {
         "use strict";
 
         return Controller.extend("com.bmw.xss.ess.dt.wzdtprototype.controller.Detail", {
@@ -19,13 +20,17 @@ sap.ui.define([
 
             onSavePressed: function(oEvent) {
                 var oModel = this.getView().getModel();
+                var oViewModel = this.getView().getModel("viewModel");
+                
                 if(oModel.hasPendingChanges()) {
                     oModel.submitChanges({
                         success: function(oData) {
-                            debugger;
+
+                            oViewModel.setProperty("/control/isEditable", false);
+                            sap.m.MessageToast.show("Changes saved successfully");
                         },
                         error: function(oData) {
-                            debugger;
+                            sap.m.MessageBox.error("Fehler: " + onerror.message);
                         }
                     });
                 }
