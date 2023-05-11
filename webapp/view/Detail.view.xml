@@ -63,13 +63,27 @@
             </VBox>
         </content>
 		<footer>
-			<Toolbar>
+			
+
+            <Toolbar>
+               
+                <Button 
+                    icon="sap-icon://alert"
+                    text="{=${message>/}.length}"
+                    visible="{=${message>/}.length > 0}"
+                    type="Emphasized"
+                    press="onMessagePopoverPress">
+                </Button>
+
+
 				<ToolbarSpacer/>
 				<Button text="Save" press="onSavePressed" type="Accept" visible="{viewModel>/control/isEditable}"/>
 				<Button text="Cancel" press="onCancelPressed" type="Reject" visible="{viewModel>/control/isEditable}"/>
 				<Button text="Edit" press="onEditPressed" type="Emphasized" visible="{= !${viewModel>/control/isEditable} }"/>
 			</Toolbar>
             
+
+
 		</footer>
     </Page>
 </mvc:View>

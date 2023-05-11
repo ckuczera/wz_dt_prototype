@@ -15,7 +15,9 @@ sap.ui.define([
                         "isEditable": false,
                         "isSaveEnabled": false
                     }
-                }), "viewModel")
+                }), "viewModel");
+
+
             },
 
             onSavePressed: function(oEvent) {
@@ -28,6 +30,16 @@ sap.ui.define([
 
                             oViewModel.setProperty("/control/isEditable", false);
                             sap.m.MessageToast.show("Changes saved successfully");
+
+                            oMessageManager = sap.ui.getCore().getMessageManager();
+                            this.getView().setModel(oMessageManager.getMessageModel(), "message");
+                            oMessageManager.registerObject(this.getView(), true);
+                           
+
+
+
+
+
                         },
                         error: function(oData) {
                             sap.m.MessageBox.error("Fehler: " + onerror.message);
@@ -35,7 +47,6 @@ sap.ui.define([
                     });
                 }
             },
-
             onCancelPressed: function(oEvent) {
                 var oViewModel = this.getView().getModel("viewModel");
                 oViewModel.setProperty("/control/isEditable", !oViewModel.getProperty("/control/isEditable"));
@@ -55,6 +66,48 @@ sap.ui.define([
                 this.getView().bindElement({
                     path: "/" + oEvent.getParameter("arguments").requestId
                 });
-            }
+            },
+            
+
+
+
+
+
+
+
+
+
+
+            onMessagePopoverPress : function (oEvent) {
+                var oSourceControl = oEvent.getSource();
+                this._getMessagePopover().then(function(oMessagePopover){
+                    oMessagePopover.openBy(oSourceControl);
+                });
+            },
+    
+            onDelete : function (oEvent) {
+                var sPath = this.getView().getBindingContext().getPath();
+                this.getView().getModel().remove(sPath);
+            },
+    
+            onClearPress : function(){
+                sap.ui.getCore().getMessageManager().removeAllMessages();
+            },
+            
+            _getMessagePopover: function () {
+                var oView = this.getView();
+
+                // create popover lazily (singleton)
+                if (!this._pMessagePopover) {
+                    this._pMessagePopover = Fragment.load({
+                        id: oView.getId(),
+                        name: "/home/user/wz_dt_prototype/webapp/view/MessagePopover.fragment.xml"
+                    }).then(function (oMessagePopover) {
+                        oView.addDependent(oMessagePopover);
+                        return oMessagePopover;
+                    });
+                }
+                return this._pMessagePopover;
+            },
         });
     });
