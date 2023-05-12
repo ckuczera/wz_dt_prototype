@@ -42,10 +42,11 @@
                         </Input>
                         <Input value="{City}" editable="{viewModel>/control/isEditable}"/>
                         <Label text="Country" />
-                        <Input
-                            id="country"
-                            value="{Country}" editable="{viewModel>/control/isEditable}"
-                        />
+                        <ComboBox   selectedKey="{Country}"
+                                    items="{/CountrySet}" 
+                                    editable="{viewModel>/control/isEditable}">
+                                    <core:ListItem key="{CountryKey}" text="{Title}"/>
+                        </ComboBox>
 
                         <core:Title text="Bankdaten" />
                         <Label text="IBAN" />
@@ -56,7 +57,7 @@
                         <core:Title text="Parkplatz" />
                         <CheckBox
                             text="No Parking Place"
-                            selected="false" editable="{viewModel>/control/isEditable}"
+                            editable="{viewModel>/control/isEditable}"
                         />
                     </f:content>
                 </f:SimpleForm>
@@ -64,7 +65,6 @@
         </content>
 		<footer>
 			
-
             <Toolbar>
                
                 <Button 
@@ -75,15 +75,11 @@
                     press="onMessagePopoverPress">
                 </Button>
 
-
 				<ToolbarSpacer/>
 				<Button text="Save" press="onSavePressed" type="Accept" visible="{viewModel>/control/isEditable}"/>
 				<Button text="Cancel" press="onCancelPressed" type="Reject" visible="{viewModel>/control/isEditable}"/>
 				<Button text="Edit" press="onEditPressed" type="Emphasized" visible="{= !${viewModel>/control/isEditable} }"/>
 			</Toolbar>
-            
-
-
-		</footer>
+   		</footer>
     </Page>
 </mvc:View>
