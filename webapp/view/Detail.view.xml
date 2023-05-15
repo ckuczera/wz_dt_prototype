@@ -51,15 +51,37 @@
                         <core:Title text="Bankdaten" />
                         <Label text="IBAN" />
                         <Input value="{IBAN}" editable="{viewModel>/control/isEditable}" />
-                        <Label text="Ländererkennung" />
-                        <Input value="{BankCity}" editable="{viewModel>/control/isEditable}"/>
 
-                        <core:Title text="Parkplatz" />
-                        <CheckBox
-                            text="No Parking Place"
-                            editable="{viewModel>/control/isEditable}"
-                        />
                     </f:content>
+                    </f:SimpleForm>
+                    
+                    <f:SimpleForm
+                    id=""
+                    editable="true"
+                    visible = "{NoParkingPlaceVisibility}"
+                    layout="ResponsiveGridLayout"
+                    title=""
+                    labelSpanXL="4"
+                    labelSpanL="4"
+                    labelSpanM="12"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="0"
+                    emptySpanL="0"
+                    emptySpanM="0"
+                    emptySpanS="0"
+                    columnsXL="2"
+                    columnsL="2"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                    >
+                        <f:content>
+                            <core:Title text="Parkplatz"/>
+                                <CheckBox
+                                    text="No Parking Place" visible="{NoParkingPlaceVisibility}" selected="{NoParkingPlace}"
+                                    editable="{viewModel>/control/isEditable}"
+                                    />
+                        </f:content>
                 </f:SimpleForm>
             </VBox>
         </content>
