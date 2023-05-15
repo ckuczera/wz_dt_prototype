@@ -50,7 +50,7 @@
 
                         <core:Title text="Bankdaten" />
                         <Label text="IBAN" />
-                        <Input value="{IBAN} " editable="{viewModel>/control/isEditable}" />
+                        <Input value="{IBAN}" editable="{viewModel>/control/isEditable}" />
                         <Label text="Ländererkennung" />
                         <Input value="{BankCity}" editable="{viewModel>/control/isEditable}"/>
 
